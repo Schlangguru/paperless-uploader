@@ -1,30 +1,31 @@
 package de.schlangguru.paperlessuploader.ui.main
 
+import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.databinding.DataBindingUtil
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.Toast
 import de.schlangguru.paperlessuploader.R
 import de.schlangguru.paperlessuploader.databinding.MainActivityBinding
 import de.schlangguru.paperlessuploader.model.Document
 import de.schlangguru.paperlessuploader.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.main_activity.*
-import kotlinx.android.synthetic.main.main_content.*
-import android.text.InputType
-import android.support.v4.widget.SearchViewCompat.setInputType
-import android.widget.EditText
-
 
 
 class MainView : AppCompatActivity() {
+
+    private val PERMISSION_REQ_READ_EXTERNAL_STORAGE = 1
 
     lateinit var vm: MainViewModel
     lateinit var binding: MainActivityBinding
@@ -107,15 +108,28 @@ class MainView : AppCompatActivity() {
     }
 
     private fun enqueuePDFs(intent: Intent) {
-        for (i in 0 until intent.clipData.itemCount) {
-            val uri = intent.clipData.getItemAt(i).uri
-            vm.enqueueDocument(uri)
+        // Check Permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_REQ_READ_EXTERNAL_STORAGE)
+        }
+        // Has Permission
+        else {
+            for (i in 0 until intent.clipData.itemCount) {
+                val uri = intent.clipData.getItemAt(i).uri
+                vm.enqueueDocument(uri)
+            }
         }
     }
 
-
-    fun showMessage(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == PERMISSION_REQ_READ_EXTERNAL_STORAGE) {
+            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                processIntent()
+            } else {
+                Snackbar.make(rootLayout, "Permission denied. Can't read documents from storage.", Snackbar.LENGTH_SHORT).show()
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
     }
-
 }
