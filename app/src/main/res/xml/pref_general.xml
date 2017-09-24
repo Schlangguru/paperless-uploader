@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Connection">
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="pref_con_host"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:inputType="text"
+            android:title="Host" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Authentication">
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="pref_auth_username"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Username" />
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="pref_auth_password"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:title="Password" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

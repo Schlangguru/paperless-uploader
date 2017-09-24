@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="light">#FFF</color>
+    <color name="error">#B71C1C</color>
+    <color name="success">#2E7D32</color>
+
+    <color name="document_status_neutral">#AA3F51B5</color>
+    <color name="document_status_error">#AAB71C1C</color>
+    <color name="document_status_success">#AA2E7D32</color>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="content_padding_top">75dp</dimen>
+    <dimen name="spacing_xlarge">16dp</dimen>
+    <dimen name="spacing_m">5dp</dimen>
+    <dimen name="spacing_s">2dp</dimen>
+    <dimen name="document_width">160dp</dimen>
+    <dimen name="document_height">230dp</dimen>
+</resources>
