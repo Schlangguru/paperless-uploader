@@ -7,7 +7,7 @@ This is an android app to upload documents to your [Paperless](https://github.co
 ![Settings](screenshots/settings.png)
 
 ## Development Status
-This projekt is under active development. Report any problem in the issues.
+This project is under active development. Report any problem in the issues.
 
 ## Features
 - Upload single or multiple PDFs to Paperless
