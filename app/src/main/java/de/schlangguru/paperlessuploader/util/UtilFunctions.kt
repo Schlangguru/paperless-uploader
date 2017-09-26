@@ -7,7 +7,14 @@ import com.shockwave.pdfium.PdfiumCore
 import de.schlangguru.paperlessuploader.ContextHolder
 import java.io.File
 
-
+/**
+ * Extracts an Bitmap image from the given pdf.
+ *
+ * @param pdfUri The uri of the pdf
+ * @param context The application context
+ *
+ * @return An bitmap of the provided pdf.
+ */
 fun imgFromPDF(
         pdfUri: Uri,
         context: Context = ContextHolder.appContext
@@ -31,6 +38,14 @@ fun imgFromPDF(
     return bitmap
 }
 
+/**
+ * Returns the real filename of a file.
+ *
+ * @param uri The Uri of the file.
+ * @param context The application context.
+ *
+ * @return The filename of the file.
+ */
 fun filenameFromUri(
         uri: Uri,
         context: Context = ContextHolder.appContext
@@ -39,6 +54,14 @@ fun filenameFromUri(
     return file.nameWithoutExtension
 }
 
+/**
+ * Removes all special chars from a the input [str]
+ * and returns a new string.
+ *
+ * The returned string will only contain word-characters, numbers and whitespace.
+ * This method is used to format the filenames of documents since paperless
+ * does not accept special chars in uploaded documents.
+ */
 fun removeSpecialChars(str: String): String {
     var replaced = str
     replaced = replaced.replace(Regex("""[^\w\d\s\,\.]"""), "")

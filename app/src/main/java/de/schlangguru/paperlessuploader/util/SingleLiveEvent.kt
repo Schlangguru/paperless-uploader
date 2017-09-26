@@ -7,10 +7,13 @@ import android.support.annotation.MainThread
 import android.util.Log
 import java.util.concurrent.atomic.AtomicBoolean
 
-
+/**
+ * Live Data to generate events.
+ * An observer can receive the events.
+ */
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 
-    private val LOG_TAG = "SingleLiveEvent"
+    private val LOG_TAG = SingleLiveEvent::class.simpleName
     private val mPending = AtomicBoolean(false)
 
     @MainThread
