@@ -6,9 +6,6 @@ This is an android app to upload documents to your [Paperless](https://github.co
 ![Settings](screenshots/choose_correspondent.png)
 ![Settings](screenshots/settings.png)
 
-## Development Status
-This project is under active development. Report any problems in the issues.
-
 ## Features
 - Upload single or multiple PDFs to Paperless
 - Shows number of documens and correspondents in Paperless
